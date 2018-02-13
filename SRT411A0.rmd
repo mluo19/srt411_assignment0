@@ -1,0 +1,189 @@
+---
+title: "Assignment 0"
+author: "Daniel Lichtblau & Mingxuan Luo"
+date: "February 12, 2018"
+output: html_document
+---
+
+<style>
+p1  {
+   color:green
+}
+</style>
+
+The purpose of this assignment is to complete the 'ToDo' assignments in the article 'A (very) short introduction to R' (i.e. link provided below). The codes and results were compiled in RStudio and then knitted into this HTML file using 'RMarkdown' and the 'knitr' package.
+
+A (very) short introduction to R: https://cran.r-project.org/doc/contrib/Torfs+Brauer-Short-R-Intro.pdf
+
+SOURCES:
+1]: https://www.dataquest.io/blog/how-to-share-data-science-portfolio/
+2]: https://rmarkdown.rstudio.com/
+3]: https://nicercode.github.io/guides/reports/
+4]: http://kbroman.org/knitr_knutshell/pages/markdown.html
+5]: http://kbroman.org/knitr_knutshell/pages/Rmarkdown.html
+6]: https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf
+7]: https://github.com/cyberis/TidyDataProject
+8]: https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/
+9]: https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-2/
+10]: https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-3/
+11]: https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-4/
+
+<br><br>
+<p1>3.1: Compute the difference between 2017 and the year  you started at this university and divide this by the difference between 2014 and the year
+    you  were  born.   Multiply  this  with  100  to  get the  percentage  of  your  life  you  have  spent  at this university.  Use brackets if you     need them.</p1>
+```{R}
+((2018 - 2016) / (2018 - 1990)) * 100
+```
+
+<br><br>
+<p1>3.2: Repeat the previous ToDo,  but with  several steps in  between. You  can give  the variables any name you want, but the name has to start
+   with a letter.</p1>
+```{R}
+schoolYears <- (2018 - 2016)
+lifeYears <- (2018 - 1990)
+percentage <- schoolYears / lifeYears
+answer <- percentage * 100
+answer
+```
+
+<br><br>
+<p1>3.4: Compute the sum of 4, 5, 8 and 11 by first combining them into a vector and then using the function sum.</p1>
+```{R}
+x <- c(4, 5, 8, 11)
+sum (x)
+```
+
+<br><br>
+<p1>3.5: Plot 100 normal random numbers.</p1>
+```{R}
+y = rnorm(100)
+plot(y)
+```
+
+<br><br>
+<p1>4.0: Find help for the 'sqrt' function.</p1>
+```{R}
+help(sqrt)
+```
+
+<br><br>
+<p1>5.0: Make a file called 'firstscript.R' containing R-code that generates  100  random  numbers and plots them, and run this script several times.</p1>
+```{R}
+source("/home/dlichtblau/Desktop/SRT411/assign0/TODOs_screenshots/5.0/firstscript.R")
+source("/home/dlichtblau/Desktop/SRT411/assign0/TODOs_screenshots/5.0/firstscript.R")
+source("/home/dlichtblau/Desktop/SRT411/assign0/TODOs_screenshots/5.0/firstscript.R")
+source("/home/dlichtblau/Desktop/SRT411/assign0/TODOs_screenshots/5.0/firstscript.R")
+source("/home/dlichtblau/Desktop/SRT411/assign0/TODOs_screenshots/5.0/firstscript.R")
+```
+
+<br><br>
+<p1>6.2: Put the  numbers 31  to  60  in  a vector  named P and in a matrix with 6 rows and 5 columns named Q. Tip: use the function 'seq'. Look at the different ways scalars, vectors and matrices are denoted in the workspace window.</p>
+```{R}
+P <- seq(from = 31, to = 60, by=1)
+Q <- matrix(data = P, nrow = 6, ncol = 5)
+P
+Q
+```
+
+<br><br>
+<p1>6.3: Make a script file which constructs three random normal vectors of length 100. Call these vectors x1, x2 and x3. Make a data frame called 't' with three columns (called a, b and c) containing respectively x1, x1+x2 and x1+x2+x3. Call the following functions for this data frame: plot(t) and sd(t). Can you understand the results? Rerun this script a few times.</p>
+```{R}
+x1 <- c(rnorm(100))
+x2 <- c(rnorm(100))
+x3 <- c(rnorm(100))
+t = data.frame(a = c(x1), b = c(x1+x2), c = c(x1+x2+x3))
+plot(t)
+#sd(t)
+```
+
+<br><br>
+<p1>7.0: Add these lines to the script file of the previous section. Try to find out, either by experimenting or by using the help, what the meaning
+is of rgb, the last argument of rgb, lwd, pch, cex.</p1>
+```{R}
+x1 <- c(rnorm(100))
+x2 <- c(rnorm(100))
+x3 <- c(rnorm(100))
+t = data.frame(a = c(x1), b = c(x1+x2), c = c(x1+x2+x3))
+plot(t$a, type = "l", ylim = range(t), lwd = 3, col = rgb(1,0,0,0.3))
+lines(t$b, type = "s", lwd = 2, col = rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch = 20, cex = 4, col = rgb(0,0,1,0.3))
+```
+
+<br><br>
+<p1>8.0: Make a file called 'tst1.txt' in Notepad from the example in Figure 4 and store it in your working directory. Write a script to read it, to
+multiply the column called 'g' by 5 and to store it as 'tst2.txt'.</p1>
+```{R}
+#setwd("/home/dlichtblau/Desktop/SRT411/assign0/TODOs_screenshots/8.0/")
+setwd("/home/")
+d = data.frame(a = c(1, 2, 4, 8, 16, 32), g = c(2, 4, 8, 16, 32, 64), x = c(3, 6, 12, 24, 48, 96))
+d
+write.table(d, file="tst1.txt", row.names=FALSE)
+d2 = read.table(file="tst1.txt",header=TRUE)
+g5 <- d2$g*5
+g5
+gNew = data.frame(a = c(1, 2, 4, 8, 16, 32), g = c(2, 4, 8, 16, 32, 64), gCol5 = g5, x = c(3, 6, 12, 24, 48, 96))
+gNew
+write.table(gNew, file="tst2.txt", row.names=FALSE)
+```
+
+<br><br>
+<p1>9.0: Compute the mean of the square root of a vector of 100 random numbers. What happens?</p1>
+```{R}    
+    mean(sqrt(c(rnorm(100))))
+```
+
+<br><br>
+</p1>10.2: Make a graph with on the x-axis: today, Christmas 2014 and your next birthday. On the y-axis the number of presents you expect on each of these days. Tip: make two vectors first.</p1>
+```{R}
+date2 = strptime(c("20180208165300", "20141225000001", "20180510000001"), format="%Y%m%d%H%M%S")
+x = date2
+y = c(3, 300, 3000)
+plot(x,y)
+```
+
+<br><br>
+<p1>11.2: Make a vector from 1 to 100. Make a for-loop which runs through the whole vector. Multiply the elements which are smaller than 5 and larger than 90 with 10 and the other elements with 0.1.</p1>
+```{r}
+vect = 1:100
+for (loopVect in vect)
+{
+  if (vect[loopVect] < 5 | vect[loopVect] > 90)
+  {
+    vect [loopVect] = vect[loopVect] * 10
+  }
+  else
+  {
+    vect[loopVect] = vect[loopVect] * 0.1
+  }
+}
+vect
+```
+
+<br><br>
+<p1>11.3: Write a function for the previous ToDo, so that you can feed it any vector you like (as argument). Use a for-loop in the function to do the computation with each element. Use the standard R function length in the specification of the counter.</p1>
+```{R}
+vect = function(start, end)
+{
+  x = seq(from = start, to = end)
+  for (counter in x)
+  {
+    if (counter < 5 | counter > 90)
+      (x[counter] = counter * 10)
+    else (x[counter] = counter * 0.1)
+  }
+  x
+}
+vect(start = 2, end = 150)
+```
+
+<br><br>
+<p1>11.3*: Actually, people often use more for-loops than necessary. The ToDo above can be done more easily and quickly without a for-loop but with regular vector computations.</p1>
+```{R}
+vect1 <- seq(from = 1, to = 5, by = 1) * 10
+vect2 <- seq(from = 6, to = 89, by = 1) * 0.1
+vect3 <- seq(from = 90, to = 100, by = 1) * 10
+vect123 <- c(vect1, vect2, vect3)
+vect123
+```
+
+
